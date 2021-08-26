@@ -1,13 +1,14 @@
 import * as React from 'react';
-import { View, Text } from 'react-native';
+import { Text } from 'react-native';
+import MultiSafeView from '../components/MultiSafeView';
 
 const HomeScreen: React.FC = (): JSX.Element => {
     return (
-        <View>
+        <MultiSafeView>
             <Text>
                 Hello
             </Text>
-        </View>
+        </MultiSafeView>
     );
 
 };
