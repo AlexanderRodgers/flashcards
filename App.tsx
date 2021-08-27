@@ -1,13 +1,19 @@
 import React from 'react';
+import * as eva from '@eva-design/eva';
+import { ApplicationProvider, IconRegistry } from '@ui-kitten/components';
+import { EvaIconsPack } from '@ui-kitten/eva-icons';
 import HomeScreen from './screens/HomeScreen';
-import { NativeBaseProvider, Box } from 'native-base';
+import AppBar from './components/AppBar';
+import MultiSafeView from './components/MultiSafeView';
 
-function App() {
-  return (
-    <NativeBaseProvider>
-      <HomeScreen />
-    </NativeBaseProvider>
-  );
-}
-
-export default App
+export default () => (
+  <>
+    <IconRegistry icons={EvaIconsPack} />
+    <ApplicationProvider {...eva} theme={eva.light}>
+      <MultiSafeView>
+        <AppBar />
+        <HomeScreen />
+      </MultiSafeView>
+    </ApplicationProvider>
+  </>
+);
