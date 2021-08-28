@@ -24,9 +24,9 @@ const Footer = ({ name }: FooterProps) => (
 	</View>
 )
 
-const Flashcard: React.FC = (): JSX.Element => {
+const Flashcard: React.FC = (props): JSX.Element => {
 	return (
-		<Card>
+		<Card {...props}>
 			<View style={styles.headerContainer}>
 				<Header title="Spanish 5" subtitle="100 Terms" />
 			</View>
