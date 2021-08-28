@@ -1,15 +1,16 @@
 import * as React from 'react';
 import FlashcardPreview from '../components/FlashcardPreview';
 import { StyleSheet, View, ScrollView } from 'react-native';
-import { Box, useBreakpointValue } from 'native-base';
+import { Box } from 'native-base';
 import { Text } from '@ui-kitten/components';
+import BottomNav from '../components/BottomNav';
 
 const flashcards = () => {
 	const arr = [];
 	for (let i = 0; i < 10; i++) {
 		const card = (
 			<Box w={[72, 124]} style={styles.cardContainer} key={i}>
-				<FlashcardPreview/>
+				<FlashcardPreview />
 			</Box>
 		);
 		arr.push(card);
@@ -20,14 +21,26 @@ const flashcards = () => {
 const HomeScreen: React.FC = (): JSX.Element => {
 	return (
 		<View style={styles.container}>
-			<Box mx={2}>
-				<Text category="h6" style={styles.setText}>Sets</Text>
-				<View style={styles.spacer}/>
-				<Text>View All &#62;</Text>
+			<Box mb={2}>
+				<Box mx={2} flexDirection="row">
+					<Text category="h6" style={styles.setText}>Sets</Text>
+					<View style={styles.spacer} />
+					<Text style={styles.setText}>View All &#62;</Text>
+				</Box>
+				<ScrollView horizontal showsHorizontalScrollIndicator={false}>
+					{flashcards()}
+				</ScrollView>
 			</Box>
-			<ScrollView horizontal showsHorizontalScrollIndicator={false}>
-				{flashcards()}
-			</ScrollView>
+			<View>
+				<Box mx={2} flexDirection="row">
+					<Text category="h6" style={styles.setText}>Recommended Sets</Text>
+					<View style={styles.spacer} />
+					<Text style={styles.setText}>View All &#62;</Text>
+				</Box>
+				<ScrollView horizontal showsHorizontalScrollIndicator={false}>
+					{flashcards()}
+				</ScrollView>
+			</View>
 		</View>
 	);
 
@@ -42,7 +55,7 @@ const styles = StyleSheet.create({
 		paddingHorizontal: 8
 	},
 	setText: {
-		alignItems: 'flex-start',
+		alignSelf: 'flex-start',
 		fontWeight: 'bold'
 	},
 	spacer: {
